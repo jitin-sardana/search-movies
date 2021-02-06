@@ -5,8 +5,8 @@ function SearchResults({ details, searchedTest }) {
         <div className='row mt-4 justify-content-left'>
             <h2>Search Results ({details.length})  {searchedTest && <span> for {searchedTest}</span> }</h2>
            
-            {details.map((result) => (
-                <div className="row search-item bg-white mt-4 pt-3 pb-3 ml-1 mr-1">
+            {details.map((result, index) => (
+                <div key={index} className="row search-item bg-white mt-4 pt-3 pb-3 ml-1 mr-1">
                     {(result.thumbnail && result.thumbnail.path) && <div className='col-xs-3 col-sm-3 col-md-3 col-lg-3'>
                         <img src={`${result.thumbnail.path}.jpg`} width='250' height='150' />
                     </div>}

@@ -12,7 +12,7 @@ function RecentSearches({ lastSearchItems }) {
                     {lastSearchItems.length > 0 ?
                         <div className='pt-1' style={{ lineHeight: '0.25' }}>
                             {
-                                lastSearchItems.slice(0).reverse().map((item, i) => <p>{i + 1}) {item}</p>)
+                                lastSearchItems.slice(0).reverse().map((item, i) => <p key={i}>{i + 1}) {item}</p>)
                             }
                         </div> :
                         <span></span>}

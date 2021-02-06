@@ -16,6 +16,12 @@ function SearchBox(props) {
         const searchCategory = category ? category : 'comics';
         dispatch(getSearchResults(searchVal, searchCategory));
     }
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            search();
+        }
+    }
     return (<>
         <Loading show={loading} />
         <div className="container mt-4">
@@ -25,7 +31,7 @@ function SearchBox(props) {
                         <h3 className="heading mt-5 text-center">Hi! Search various Comics, Series, Character, events etc.</h3>
                         <div className="d-flex justify-content-center px-5">
                             <div className="search">
-                                <input type="text" className="search-input" placeholder="Search..." ref={searchInput} />
+                                <input type="text" className="search-input" placeholder="Search..." ref={searchInput} onKeyPress={(e) => handleKeyPress(e)} />
                                 <button className="search-icon" onClick={() => search()}> <i className="fa fa-search"></i> </button>
                             </div>
                         </div>
@@ -41,7 +47,7 @@ function SearchBox(props) {
                             (Array.isArray(searchResults) && searchResults.length > 0) && <SearchResults details={searchResults} searchedTest={searchInput.current.value} />
                         }
                         {
-                             (Array.isArray(searchResults) && searchResults.length === 0) && <h3>No Results Found.</h3>
+                            (Array.isArray(searchResults) && searchResults.length === 0) && <h3>No Results Found.</h3>
                         }
                     </div>
                 </div>
